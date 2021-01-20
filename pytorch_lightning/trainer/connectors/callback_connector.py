@@ -75,7 +75,7 @@ class CallbackConnector:
 
     def configure_progress_bar(self, refresh_rate=1, process_position=0):
         # smaller refresh rate on colab causes crashes, warn user about this
-        if os.getenv('COLAB_GPU') and refresh_rate < 20:
+        if os.getenv('COLAB_GPU') and 0 < refresh_rate < 20:
             rank_zero_warn(
                 "You have set progress_bar_refresh_rate < 20 on Google Colab. This"
                 " may crash. Consider using progress_bar_refresh_rate >= 20 in Trainer.",
